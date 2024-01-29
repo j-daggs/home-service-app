@@ -5,6 +5,7 @@ import HomeScreen from '../Screens/HomeScreen/HomeScreen';
 import ProfileScreen from '../Screens/ProfileScreen/ProfileScreen';
 import BookingScreen from '../Screens/BookingScreen/BookingScreen';
 import { FontAwesome } from '@expo/vector-icons';
+import Colors from '../Utils/Colors';
 
 
 const Tab = createBottomTabNavigator();

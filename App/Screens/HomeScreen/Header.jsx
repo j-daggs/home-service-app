@@ -1,7 +1,8 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, Image, TextInput } from 'react-native'
 import React from 'react'
 import { useUser } from '@clerk/clerk-expo';
 import { FontAwesome } from '@expo/vector-icons';
+import Colors from '../../Utils/Colors';
 
 export default function Header() {
     const {user,isLoading}=useUser();
@@ -13,8 +14,8 @@ export default function Header() {
                 <Image source={{uri:user?.imageUrl}}
                 style={styles.userImage}/>
                 <View>
-                    <Text style={{color:Colors.WHITE}}>Welcome,</Text>
-                    <Text style={{color:Colors.WHITE, fontSize:20}}>{user.fullName}</Text>
+                    <Text style={{color:Colors.WHITE,fontFamily:'outfit'}}>Welcome,</Text>
+                    <Text style={{color:Colors.WHITE, fontSize:20,fontFamily:'outfit-medium'}}>{user.fullName}</Text>
                 </View>   
             </View>
             <FontAwesome name="bookmark-o" size={27} color="white" />
@@ -57,7 +58,8 @@ const styles = StyleSheet.create({
         backgroundColor:Colors.WHITE,
         borderRadius:8,
         width:'85%',
-        fontSize:16
+        fontSize:16,
+        fontFamily:'outfit'
     },
     searchBarContainer:{
         marginTop:15,
