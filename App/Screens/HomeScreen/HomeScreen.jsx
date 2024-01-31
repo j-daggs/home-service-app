@@ -11,6 +11,8 @@ export default function HomeScreen() {
       <View style={{padding:20}}>
         {/* Slider */}
         <Slider/>
+        {/* Categories */}
+        <Categories/>
       </View>
     </View>
   )
