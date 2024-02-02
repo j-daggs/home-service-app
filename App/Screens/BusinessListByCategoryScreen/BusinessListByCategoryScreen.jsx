@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons';
 import GlobalApi from '../../Utils/GlobalApi';
 import BusinessListItem from './BusinessListItem';
+import Colors from '../../Utils/Colors';
 
 export default function BusinessListByCategoryScreen() {
     const param=useRoute().params;
@@ -37,7 +38,7 @@ export default function BusinessListByCategoryScreen() {
                 <BusinessListItem business={item} />
             )}  
         />:
-        <Text style={{fontFamily:'outfit-meidum',
+        <Text style={{fontFamily:'outfit-medium',
         color:Colors.GRAY,
         fontSize:20,textAlign:'center',marginTop:'20%'}}>No Business Found</Text>}
     </View>
