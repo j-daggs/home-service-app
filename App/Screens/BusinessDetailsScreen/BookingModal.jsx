@@ -79,7 +79,7 @@ export default function BookingModal({hideModal}) {
         {/* Note Section */}
         <View style={{paddingTop:20}}>
             <Heading text={'Any Suggestion Note'}/>
-            <TextInput placeholder='Note' 
+            <TextInput placeholder='Note' placeholderTextColor={Colors.GRAY}
             numberOfLines={4} multiline={true}
             style={styles.noteTextArea}
             onChange={(text)=>setNote(text)}
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         padding:10,
         borderWidth:1,
         borderColor:Colors.PRIMARY,
-        borderRadius:20,
+        borderRadius:15,
         paddingHorizontal:18,
         backgroundColor:Colors.PRIMARY,
         color:Colors.WHITE
@@ -113,22 +113,23 @@ const styles = StyleSheet.create({
         padding:10,
         borderWidth:1,
         borderColor:Colors.PRIMARY,
-        borderRadius:20,
+        borderRadius:15,
         paddingHorizontal:18,
         color:Colors.PRIMARY
     },
     noteTextArea:{
         borderWidth:1,
-        borderRadius:99,
+        borderRadius:15,
         textAlignVertical:'top',
         padding:20,
         fontSize:16,
         fontFamily:'outfit',
-        borderColor:Colors.PRIMARY_LIGHT
+        borderColor:Colors.PRIMARY_LIGHT,
+        height:150
     },
     confirmBtn:{
         textAlign:'center',
-        borderRadius:20,
+        borderRadius:99,
         fontFamily:'outfit-medium',
         fontSize:17,
         backgroundColor:Colors.PRIMARY,
