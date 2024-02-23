@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import TabNavigation from './App/Navigations/TabNavigation';
 import { useFonts } from 'expo-font';
 
+
 const tokenCache = {
   async getToken(key) {
     try {
@@ -34,7 +35,6 @@ export default function App() {
     tokenCache={tokenCache}
     publishableKey='pk_test_dG9sZXJhbnQtc25ha2UtNDAuY2xlcmsuYWNjb3VudHMuZGV2JA'>
     <View style={styles.container}>
-      
       {/* Sign In Component */}
       <SignedIn>
           <NavigationContainer>

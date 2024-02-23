@@ -1,20 +1,24 @@
-import { View, Text, TouchableOpacity,Modal, StyleSheet, FlatList, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity,Modal, StyleSheet, FlatList, TextInput, ScrollView, KeyboardAvoidingView, ToastAndroid } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import PageHeading from '../../Components/PageHeading';
 import CalendarPicker from 'react-native-calendar-picker';
 import Colors from '../../Utils/Colors';
 import Heading from '../../Components/Heading';
+import GlobalApi from '../../Utils/GlobalApi';
+import { useUser } from '@clerk/clerk-expo';
 
-export default function BookingModal({hideModal}) {
+export default function BookingModal({businessId,hideModal}) {
 
     const [timeList,setTimeList]=useState();
     const [selectedTime,setSelectedTime]=useState();
     const [selectedDate,setSelectedDate]=useState();
     const [note,setNote]=useState();
+    const {user}=useUser();
     useEffect(()=>{
         getTime();
     },[])
+
     const getTime=()=>{
         const timeList=[];
         for(let i=8;i<=12;i++)
@@ -37,8 +41,29 @@ export default function BookingModal({hideModal}) {
         }
         setTimeList(timeList);
     }
+
+    // Create Booking Method
+    const createNewBooking=()=>{
+        if(!selectedTime||!selectedDate){
+            ToastAndroid.show('Please Select Date and Time', ToastAndroid.LONG)
+            return;
+        }
+        const data={
+            userName:user?.fullName,
+            userEmail:user?.primaryEmailAddress.emailAddress,
+            time:selectedTime,
+            date:selectedDate,
+            note:note,
+            businessId:businessId
+        }
+        GlobalApi.createBooking(data).then(resp=>{
+            console.log("Resp",resp);
+            ToastAndroid.show('Booking Created Successfully!', ToastAndroid.LONG)
+        })
+    }
   return (
-    <View style={{padding:20,paddingTop:50}}>
+    <ScrollView>
+    <KeyboardAvoidingView style={{padding:20,paddingTop:50}} keyboardVerticalOffset={10} behavior={"position"}>
                 <TouchableOpacity style={{display:'flex',flexDirection:'row',gap:10,alignItems:'center',marginBottom:20}}
             onPress={()=>hideModal()}>
             <Ionicons name="arrow-back-outline" size={30} color="black" />
@@ -86,11 +111,15 @@ export default function BookingModal({hideModal}) {
             />
 
             {/* confirmation Button */}
-            <TouchableOpacity style={{marginTop:15}}>
-                <Text style={styles.confirmBtn}>Confirm and Book</Text>
+            <TouchableOpacity style={{marginTop:15}}
+            onPress={()=>createNewBooking()}>
+                <Text style={styles.confirmBtn}
+                
+                >Confirm and Book</Text>
             </TouchableOpacity>
         </View>
-    </View>
+    </KeyboardAvoidingView>
+    </ScrollView>
   )
 }
 
