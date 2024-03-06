@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity,Modal, StyleSheet, FlatList, TextInput, ScrollView, KeyboardAvoidingView, ToastAndroid } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
-import PageHeading from '../../Components/PageHeading';
 import CalendarPicker from 'react-native-calendar-picker';
 import Colors from '../../Utils/Colors';
 import Heading from '../../Components/Heading';
