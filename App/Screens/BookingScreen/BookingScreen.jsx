@@ -31,7 +31,7 @@ export default function BookingScreen() {
       data={bookingList}
       renderItem={({item,index})=>(
         <BusinessListItem 
-        business={item?.businessList}
+        business={item?.business}
         booking={item}
          />
       )}        
